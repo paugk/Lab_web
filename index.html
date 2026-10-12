@@ -9,7 +9,7 @@
 :root{
   color-scheme:dark;
   --bg:#000; --bg1:#080808; --bg2:#080808; --panel:rgba(8,8,8,.72); --panel2:#111111;
-  --line:rgba(255,255,255,.07); --line2:#222; --line3:rgba(255,255,255,.18);
+  --line:rgba(255,255,255,.07); --line2:rgba(255,255,255,.1); --line3:rgba(255,255,255,.18);
   --ease:cubic-bezier(.16,1,.3,1);
   --fg:#f4f4f5; --mut:#a1a1aa; --dim:#71717a;
   --teal:#2ee6c9; --teal-d:#12b8a0;
@@ -23,7 +23,7 @@
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:72px}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
-body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.6 var(--body);-webkit-font-smoothing:antialiased}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 var(--body);-webkit-font-smoothing:antialiased}
 a{color:var(--teal);text-underline-offset:3px}
 a:hover{color:#7dfbe6}
 :focus-visible{outline:2px solid var(--teal);outline-offset:2px;border-radius:4px}
@@ -55,13 +55,10 @@ main{min-width:0;overflow-x:clip}
 .btn.sec:hover{border-color:var(--line3);color:var(--fg)}
 .btn.sm{font-size:13px;padding:6px 12px;border-radius:8px}
 .mnav{display:none;position:relative}
-.mnav summary{list-style:none;cursor:pointer;font:500 13px var(--body);color:var(--mut);border:1px solid var(--line2);border-radius:8px;padding:6px 12px}
-.mnav summary::-webkit-details-marker{display:none}
-.mnav[open] summary{color:var(--fg);border-color:var(--line3)}
 .mnav nav{position:absolute;right:0;top:calc(100% + 8px);width:220px;display:flex;flex-direction:column;padding:6px;border:1px solid var(--line2);border-radius:12px;background:rgba(8,8,8,.92);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px)}
 .mnav nav a{color:var(--mut);text-decoration:none;font-size:14px;padding:8px 10px;border-radius:8px}
 .mnav nav a:hover{color:var(--fg);background:rgba(255,255,255,.05)}
-@media (max-width:1100px){.navlinks{display:none}.mnav{display:block}}
+@media (max-width:1023px){.navlinks{display:none}.mnav{display:block}}
 @media (max-width:640px){.topnav{padding-inline:16px}.cchip,.navr .btn{display:none}}
 /* hero */
 .hero{position:relative;text-align:center;padding:112px 24px 0;display:flex;flex-direction:column;align-items:center}
@@ -305,7 +302,7 @@ footer #footMeta{font-family:var(--mono);font-size:12px}
 .btn.pri{position:relative;overflow:hidden;box-shadow:0 0 0 1px rgba(255,255,255,.1),0 8px 24px -12px rgba(255,255,255,.35)}
 .btn.pri::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.75) 50%,transparent 65%);transform:translateX(-120%);transition:transform .7s var(--ease);pointer-events:none}
 .btn.pri:hover::after{transform:translateX(120%)}
-.btn.sec{background:rgba(8,8,8,.7);border-color:#222}
+.btn.sec{background:rgba(8,8,8,.7);border-color:rgba(255,255,255,.1)}
 .btn.sec:hover{background:#111;border-color:rgba(255,255,255,.2)}
 /* Shimmer Button: a light runs around the edge of a black button */
 .btn.shimmer{position:relative;isolation:isolate;overflow:hidden;color:#fafafa;background:#000;border:0;padding:10px 18px;box-shadow:0 0 0 1px rgba(255,255,255,.1),0 10px 30px -12px rgba(46,230,201,.45)}
@@ -322,7 +319,7 @@ footer #footMeta{font-family:var(--mono);font-size:12px}
 .lamp::before{content:"";position:absolute;left:20%;right:20%;top:0;height:1px;background:linear-gradient(90deg,transparent,rgba(125,251,230,.8),transparent);box-shadow:0 0 24px 2px rgba(46,230,201,.35)}
 #particles{position:absolute;inset:0;width:100%;height:100%}
 /* Animated Shiny Text in the eyebrow pill */
-.epill{background:rgba(8,8,8,.7);border-color:#222;transition:border-color .2s var(--ease),color .2s var(--ease)}
+.epill{background:rgba(8,8,8,.7);border-color:rgba(255,255,255,.1);transition:border-color .2s var(--ease),color .2s var(--ease)}
 .epill>span:last-child{background:linear-gradient(110deg,var(--mut) 40%,#fff 50%,var(--mut) 60%) 0 0/250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shiny 5s var(--ease) infinite}
 @keyframes shiny{0%,35%{background-position:100% 0}100%{background-position:-50% 0}}
 /* gradient headline with a passing sheen */
@@ -333,19 +330,19 @@ h2{background:linear-gradient(180deg,#fff 40%,#9a9aa3 100%);-webkit-background-c
 .beam{position:relative}
 .beam::after,.bento a::after{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;pointer-events:none;background:conic-gradient(from var(--ang),transparent 0 72%,rgba(46,230,201,0) 74%,rgba(46,230,201,.9) 86%,#fff 88%,transparent 90%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0);animation:spin-ang 8s linear infinite}
 .pframe.beam::after{border-radius:16px}
-.pframe .pwin{background:rgba(8,8,8,.78);border-color:#222;box-shadow:inset 0 1px 0 rgba(255,255,255,.05),0 40px 120px -40px rgba(46,230,201,.18)}
+.pframe .pwin{background:rgba(8,8,8,.78);border-color:rgba(255,255,255,.1);box-shadow:inset 0 1px 0 rgba(255,255,255,.05),0 40px 120px -40px rgba(46,230,201,.18)}
 /* Bento cards: Magic Card spotlight + beam on hover */
-.bento a{background:linear-gradient(180deg,#0b0b0b,#060606);border-color:#1c1c1c;box-shadow:inset 0 1px 0 rgba(255,255,255,.04);transition:border-color .3s var(--ease),transform .4s var(--ease),box-shadow .4s var(--ease)}
+.bento a{background:linear-gradient(180deg,#0b0b0b,#060606);border-color:rgba(255,255,255,.07);box-shadow:inset 0 1px 0 rgba(255,255,255,.04);transition:border-color .3s var(--ease),transform .4s var(--ease),box-shadow .4s var(--ease)}
 .bento a::before{inset:0;width:auto;height:auto;background:radial-gradient(360px circle at var(--mx,50%) var(--my,0%),rgba(46,230,201,.09),transparent 60%);transition:opacity .4s var(--ease)}
 .bento a::after{opacity:0;transition:opacity .4s var(--ease);animation-duration:5s}
-.bento a:hover{border-color:#2a2a2a;background:linear-gradient(180deg,#0d0d0d,#070707);transform:translateY(-2px);box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 24px 60px -30px rgba(46,230,201,.25)}
+.bento a:hover{border-color:rgba(255,255,255,.14);background:linear-gradient(180deg,#0d0d0d,#070707);transform:translateY(-2px);box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 24px 60px -30px rgba(46,230,201,.25)}
 .bento a:hover::after,.bento a:focus-visible::after{opacity:1}
-.bento .ib{background:#111;border-color:#222;color:var(--teal)}
+.bento .ib{background:#111;border-color:rgba(255,255,255,.1);color:var(--teal)}
 .bento .go{transition:transform .3s var(--ease)}
 .bento a:hover .go{transform:translateX(3px)}
 /* panels and surfaces */
 .panel{border-color:rgba(255,255,255,.07);box-shadow:inset 0 1px 0 rgba(255,255,255,.035);transition:border-color .3s var(--ease)}
-.panel:hover{border-color:#262626}
+.panel:hover{border-color:rgba(255,255,255,.13)}
 .road-card{background:transparent;box-shadow:none}
 .tbl{background:rgba(8,8,8,.6)}
 th{background:#0a0a0a}
@@ -373,34 +370,31 @@ section.sec.spot.r::before{background:radial-gradient(closest-side,rgba(255,255,
 .vp{position:relative;max-width:780px;margin-top:28px;padding:22px 28px;border-radius:18px;border:1px solid rgba(255,255,255,.08);background:rgba(12,12,12,.45);-webkit-backdrop-filter:blur(14px) saturate(140%);backdrop-filter:blur(14px) saturate(140%);box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 30px 80px -40px rgba(46,230,201,.28)}
 .vp::before{content:"";position:absolute;left:28px;right:28px;top:-1px;height:1px;background:linear-gradient(90deg,transparent,rgba(46,230,201,.75),transparent)}
 .hero .vp .lede{margin-top:0}
-.hero .vp .lede b:nth-of-type(1){color:var(--match)}
-.hero .vp .lede b:nth-of-type(2){color:var(--break)}
-.hero .vp .lede b:nth-of-type(3){color:var(--unk)}
 /* compact command bar with one-tap copy */
-.cbar{display:flex;align-items:center;gap:10px;width:min(660px,100%);margin-top:22px;padding:6px 6px 6px 14px;border:1px solid #222;border-radius:12px;background:rgba(8,8,8,.8);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);text-align:left;box-shadow:inset 0 1px 0 rgba(255,255,255,.04)}
+.cbar{display:flex;align-items:center;gap:10px;width:min(660px,100%);margin-top:22px;padding:6px 6px 6px 14px;border:1px solid rgba(255,255,255,.1);border-radius:12px;background:rgba(8,8,8,.8);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);text-align:left;box-shadow:inset 0 1px 0 rgba(255,255,255,.04)}
 .cbar>.p{color:var(--teal);font:13px var(--mono);flex:none}
 .cbar pre{flex:1;min-width:0;margin:0;padding:6px 0;border:0;border-radius:0;background:transparent;overflow-x:auto;white-space:nowrap;font:12.5px/1.4 var(--mono);color:#e4e4e7;scrollbar-width:none}
 .cbar pre::-webkit-scrollbar{display:none}
-.cbar .copy{flex:none;background:#111;border-color:#2a2a2a;padding:6px 12px}
+.cbar .copy{flex:none;background:#111;border-color:rgba(255,255,255,.14);padding:6px 12px}
 /* result states: emerald for success, red / amber for alerts, soft glow */
 .res.MATCH,.res.PASS,.res.REPRODUCED,.res.satisfied{box-shadow:0 0 16px -6px rgba(52,211,153,.55)}
 .res.BREAK,.res.FAIL,.res.REJECTED,.res.contradicted{box-shadow:0 0 16px -6px rgba(255,99,105,.6)}
 .res.UNKNOWN,.res.undetermined,.res.INCOMPLETE{box-shadow:0 0 16px -6px rgba(251,191,36,.45)}
 .res.UNTRUSTED,.res.MISMATCH{box-shadow:0 0 16px -6px rgba(255,159,90,.5)}
 /* pill tabs with a sliding indicator */
-.seg{position:relative;display:inline-flex;flex-wrap:wrap;gap:2px;max-width:100%;padding:4px;border:1px solid #1c1c1c;border-radius:14px;background:#070707;box-shadow:inset 0 1px 0 rgba(255,255,255,.03)}
+.seg{position:relative;display:inline-flex;flex-wrap:wrap;gap:2px;max-width:100%;padding:4px;border:1px solid rgba(255,255,255,.07);border-radius:14px;background:#070707;box-shadow:inset 0 1px 0 rgba(255,255,255,.03)}
 .seg button{position:relative;z-index:1;background:transparent;border:0;border-radius:10px;padding:7px 14px;font-family:var(--mono);font-size:12.5px;color:var(--mut)}
 .seg button:hover{color:var(--fg)}
 .seg button[aria-pressed="true"]{background:transparent;color:var(--fg)}
 .seg:not(.ready) button[aria-pressed="true"]{background:#161616}
-.seg-ind{position:absolute;left:0;top:0;z-index:0;border-radius:10px;background:#161616;border:1px solid #2a2a2a;box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 6px 16px -8px rgba(0,0,0,.9);pointer-events:none;opacity:0}
+.seg-ind{position:absolute;left:0;top:0;z-index:0;border-radius:10px;background:#161616;border:1px solid rgba(255,255,255,.14);box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 6px 16px -8px rgba(0,0,0,.9);pointer-events:none;opacity:0}
 .seg.ready .seg-ind{transition:transform .45s var(--ease),width .45s var(--ease),height .45s var(--ease),opacity .2s}
 .dot.MATCH{box-shadow:0 0 8px rgba(52,211,153,.8)}.dot.BREAK{box-shadow:0 0 8px rgba(255,99,105,.8)}.dot.UNKNOWN{box-shadow:0 0 8px rgba(251,191,36,.7)}
 @keyframes swapin{from{opacity:0;filter:blur(4px);transform:translateY(4px)}}
 .swap{animation:swapin .45s var(--ease)}
 /* flow diagram: records on the left, sources on the right, one line per link or control */
 .flow{display:grid;grid-template-columns:minmax(0,230px) minmax(48px,1fr) minmax(0,1.7fr);margin-top:14px;padding:18px;border:1px solid rgba(255,255,255,.07);border-radius:16px;background:radial-gradient(80% 120% at 30% 50%,rgba(46,230,201,.05),transparent 60%),#060606;box-shadow:inset 0 1px 0 rgba(255,255,255,.035)}
-.fl-l{align-self:center;display:flex;flex-direction:column;align-items:flex-start;gap:6px;padding:14px;border:1px solid #222;border-radius:12px;background:#0b0b0b}
+.fl-l{align-self:center;display:flex;flex-direction:column;align-items:flex-start;gap:6px;padding:14px;border:1px solid rgba(255,255,255,.1);border-radius:12px;background:#0b0b0b}
 .fl-l b{font-size:15px;font-weight:500}
 .fl-w{width:100%;height:100%;overflow:visible}
 .fl-w path{fill:none;stroke-width:1.5;stroke:#3a3a3a;stroke-dasharray:3 6}
@@ -410,7 +404,7 @@ section.sec.spot.r::before{background:radial-gradient(closest-side,rgba(255,255,
 @keyframes flowdash{to{stroke-dashoffset:-24}}
 @keyframes blink{50%{opacity:.3}}
 .fl-r{display:grid;grid-auto-rows:1fr;gap:10px}
-.fl-n{display:flex;flex-direction:column;justify-content:center;gap:3px;min-width:0;padding:10px 14px;border:1px solid #1c1c1c;border-left:2px solid #333;border-radius:12px;background:#0a0a0a;font-size:13px}
+.fl-n{display:flex;flex-direction:column;justify-content:center;gap:3px;min-width:0;padding:10px 14px;border:1px solid rgba(255,255,255,.07);border-left:2px solid rgba(255,255,255,.18);border-radius:12px;background:#0a0a0a;font-size:13px}
 .fl-n.ok{border-left-color:var(--match)}
 .fl-n.bad{border-left-color:var(--break);box-shadow:0 0 0 1px rgba(255,99,105,.22),0 0 28px -10px rgba(255,99,105,.6)}
 .fl-n.unk{border-left-color:var(--unk)}
@@ -422,7 +416,7 @@ section.sec.spot.r::before{background:radial-gradient(closest-side,rgba(255,255,
 .lab{grid-template-columns:300px minmax(0,1fr)}
 @media (max-width:860px){.lab{grid-template-columns:minmax(0,1fr)}}
 .attacks{gap:8px}
-.attacks button{--c:161,161,170;position:relative;overflow:hidden;gap:6px;padding:14px 14px 14px 16px;border-radius:14px;border-color:#1c1c1c;background:linear-gradient(180deg,#0b0b0b,#070707)}
+.attacks button{--c:161,161,170;position:relative;overflow:hidden;gap:6px;padding:14px 14px 14px 16px;border-radius:14px;border-color:rgba(255,255,255,.07);background:linear-gradient(180deg,#0b0b0b,#070707)}
 .attacks button::before{content:"";position:absolute;left:0;top:12px;bottom:12px;width:2px;border-radius:2px;background:rgb(var(--c));opacity:.5;box-shadow:0 0 12px rgb(var(--c))}
 .attacks button.REPRODUCED{--c:52,211,153}.attacks button.REJECTED{--c:255,99,105}.attacks button.UNTRUSTED,.attacks button.MISMATCH{--c:255,159,90}.attacks button.INCOMPLETE{--c:251,191,36}
 .attacks .st{display:flex;align-items:center;gap:8px;font:600 15px var(--mono);letter-spacing:.06em;color:rgb(var(--c))}
@@ -430,14 +424,14 @@ section.sec.spot.r::before{background:radial-gradient(closest-side,rgba(255,255,
 .attacks button:hover{border-color:rgba(var(--c),.35)}
 .attacks button[aria-pressed="true"]{border-color:rgba(var(--c),.55);background:radial-gradient(120% 90% at 0 0,rgba(var(--c),.12),transparent 60%),#0a0a0a}
 .attacks button[aria-pressed="true"]::before{opacity:1}
-.verdict{border-color:#222;background:linear-gradient(180deg,#0b0b0b,#070707)}
+.verdict{border-color:rgba(255,255,255,.1);background:linear-gradient(180deg,#0b0b0b,#070707)}
 /* terminal windows: title bar, traffic lights, copy in the corner, syntax colours */
-.cmd{border:1px solid #222;border-radius:12px;background:#060606;overflow:hidden;box-shadow:inset 0 1px 0 rgba(255,255,255,.04),0 20px 50px -30px rgba(0,0,0,.9)}
+.cmd{border:1px solid rgba(255,255,255,.1);border-radius:12px;background:#060606;overflow:hidden;box-shadow:inset 0 1px 0 rgba(255,255,255,.04),0 20px 50px -30px rgba(0,0,0,.9)}
 .cmd::before{content:"";display:block;height:34px;border-bottom:1px solid rgba(255,255,255,.06);background:radial-gradient(circle at 18px 17px,#ff5f57 4.5px,transparent 5px),radial-gradient(circle at 34px 17px,#febc2e 4.5px,transparent 5px),radial-gradient(circle at 50px 17px,#28c840 4.5px,transparent 5px),linear-gradient(#0e0e0e,#0a0a0a);opacity:.95}
 .cmd::after{content:"bash";position:absolute;top:9px;left:50%;transform:translateX(-50%);font:11px var(--mono);color:var(--dim);pointer-events:none}
 .cmd pre{border:0;border-radius:0;background:transparent;padding:14px 18px 16px}
-.cmd .copy{top:5px;right:8px;background:#111;border-color:#2a2a2a;padding:3px 10px}
-.pterm{position:relative;padding-top:44px;background:#060606;border-color:#222}
+.cmd .copy{top:5px;right:8px;background:#111;border-color:rgba(255,255,255,.14);padding:3px 10px}
+.pterm{position:relative;padding-top:44px;background:#060606;border-color:rgba(255,255,255,.1)}
 .pterm::before{content:"";position:absolute;left:0;right:0;top:0;height:30px;border-bottom:1px solid rgba(255,255,255,.06);border-radius:12px 12px 0 0;background:radial-gradient(circle at 16px 15px,#ff5f57 4px,transparent 4.5px),radial-gradient(circle at 30px 15px,#febc2e 4px,transparent 4.5px),radial-gradient(circle at 44px 15px,#28c840 4px,transparent 4.5px),#0b0b0b}
 .hl-k{color:#fafafa;font-weight:500}.hl-iv{color:var(--teal);font-weight:500}.hl-sc{color:#93c5fd}.hl-f{color:#c4b5fd}.hl-s{color:#d6d3d1;text-decoration:underline;text-decoration-color:rgba(255,255,255,.15);text-underline-offset:3px}.hl-v{color:var(--unk)}.hl-c{color:var(--dim);font-style:italic}
 @media (max-width:640px){.vp{padding:16px 18px}.cbar{margin-top:16px}}
@@ -496,6 +490,195 @@ details.raw summary:hover{color:var(--teal)}
 textarea:focus{border-color:rgba(46,230,201,.5)}
 /* explanatory text that sets its own size inline stays at 14px or more */
 main [style*="font-size:13px"],.ctx-h,#mcpInstr{font-size:14px!important}
+/* ---------- v4: navigation (sliding indicator in the top bar, floating section rail) ---------- */
+.navlinks{position:relative}
+.navlinks a{position:relative;z-index:1}
+.navlinks a.on{background:transparent;box-shadow:none;color:var(--fg)}
+.nav-ind{position:absolute;left:0;top:0;z-index:0;border-radius:8px;background:rgba(255,255,255,.07);box-shadow:inset 0 0 0 1px rgba(255,255,255,.08),inset 0 -2px 0 rgba(46,230,201,.7);opacity:0;pointer-events:none;list-style:none}
+.navlinks.ready .nav-ind{transition:transform .45s var(--ease),width .45s var(--ease),opacity .25s var(--ease)}
+.mnav nav a.on{color:var(--fg);background:rgba(46,230,201,.08);box-shadow:inset 2px 0 0 var(--teal)}
+.rail{position:fixed;right:20px;top:50%;z-index:15;transform:translate(8px,-50%);opacity:0;pointer-events:none;transition:opacity .4s var(--ease),transform .4s var(--ease)}
+.rail.show{opacity:1;transform:translate(0,-50%);pointer-events:auto}
+.rail ol{position:relative;list-style:none;margin:0;padding:6px 0;display:flex;flex-direction:column;gap:6px}
+.rail ol::before,.rail .prog{content:"";position:absolute;right:11px;top:14px;bottom:14px;width:1px;background:rgba(255,255,255,.1)}
+.rail .prog{background:linear-gradient(180deg,var(--teal),rgba(46,230,201,.35));bottom:auto;height:0;box-shadow:0 0 8px rgba(46,230,201,.5)}
+.rail a{display:flex;align-items:center;justify-content:flex-end;gap:10px;height:22px;text-decoration:none;color:var(--mut);font:500 12.5px var(--body)}
+.rail a:hover{text-decoration:none}
+.rail .lb{opacity:0;transform:translateX(6px);white-space:nowrap;padding:3px 9px;border-radius:7px;background:rgba(10,10,10,.92);border:1px solid rgba(255,255,255,.1);transition:opacity .25s var(--ease),transform .25s var(--ease),color .2s}
+.rail .lb i{font-style:normal;font-family:var(--mono);font-size:11px;color:var(--dim);margin-right:6px}
+.rail .dt{position:relative;z-index:1;flex:none;width:9px;height:9px;margin-right:7px;border-radius:50%;background:#0a0a0a;border:1.5px solid rgba(255,255,255,.22);transition:background .25s,border-color .25s,box-shadow .25s,transform .25s var(--ease)}
+.rail a.done .dt{border-color:rgba(46,230,201,.55)}
+.rail a.on .dt{background:var(--teal);border-color:var(--teal);box-shadow:0 0 10px rgba(46,230,201,.8);transform:scale(1.2)}
+.rail a.on .lb,.rail:hover .lb,.rail a:focus-visible .lb{opacity:1;transform:none}
+.rail a.on .lb{color:var(--fg)}
+.rail a:hover .lb{color:var(--fg);border-color:rgba(46,230,201,.4)}
+.rail a:hover .dt{border-color:var(--teal)}
+.rail a:focus-visible{outline:none}
+.rail a:focus-visible .lb{outline:2px solid var(--teal);outline-offset:2px}
+@media (max-width:1279px){.rail{display:none}}
+@media (max-width:1519px){.rail a.on .lb{opacity:0;transform:translateX(6px)}.rail:hover a.on .lb,.rail a.on:focus-visible .lb{opacity:1;transform:none}}
+@media print{.rail{display:none}}
+/* ---------- v5: desktop scale for navigation and secondary text ---------- */
+.mnav nav{width:240px;padding:8px}
+.mnav nav a{font-size:15px;padding:10px 12px}
+.cchip{font-size:13px;padding:6px 12px}
+@media (min-width:1024px){
+  html{scroll-padding-top:84px}
+  .topnav{height:64px;gap:16px}
+  .navlinks{gap:2px}
+  .navlinks a{font-size:14px;padding:8px 10px}
+  .navr .btn.sm{font-size:14px;padding:8px 14px;border-radius:9px}
+}
+@media (min-width:1024px) and (max-width:1199px){.cchip{display:none}}
+@media (min-width:1200px){
+  .navlinks{gap:4px}
+  .navlinks a{font-size:15px;padding:8px 12px}
+}
+@media (min-width:1440px){
+  html{scroll-padding-top:88px}
+  .topnav{height:68px}
+  .navlinks a{font-size:15.5px;padding:9px 14px}
+  .cchip{font-size:13.5px}
+  .navr .btn.sm{font-size:15px;padding:9px 16px}
+  .sub,.note,td .why,.ctl .r,.attacks .s,.bento .see,.ctx-c p,ul.plain,.chk,.fl-n,.pctl .r .w{font-size:15px}
+  .k,.sec-label{font-size:12.5px}
+  .rail a{font-size:13.5px}
+}
+/* ---------- v6: WCAG contrast without opacity, fluid desktop width (min-width only: mobile untouched) ---------- */
+/* text never fades through opacity: inactive diagram nodes are dashed instead, inline opacity on pill labels is undone */
+.fl-n.off{opacity:1;border-style:dashed;border-left-style:solid;background:transparent}
+.res span[style*="opacity"]{opacity:1!important}
+/* desktop: the content column grows with the screen, then stops (1180px up to 1320px) */
+@media (min-width:1024px){
+  :root{--w:clamp(1180px,68vw,1320px)}
+  .topnav{padding-inline:max(24px,calc((100% - var(--w) - 48px)/2))}
+  section.sec{padding-block:clamp(140px,10vw,180px) 0}
+  .sec-h{margin-bottom:clamp(40px,3.5vw,56px)}
+  .fl-id{font-size:12px}
+}
+/* ---------- v7: floating top bar, hamburger menu card ---------- */
+html{scroll-padding-top:104px}
+.topnav{top:16px;margin:16px auto 0;width:min(calc(var(--w) + 48px),calc(100% - 32px));height:72px;padding-inline:20px;gap:16px;border-radius:16px;border:1px solid rgba(255,255,255,.12);background:rgba(12,12,12,.85);-webkit-backdrop-filter:blur(20px) saturate(140%);backdrop-filter:blur(20px) saturate(140%);box-shadow:0 14px 40px -14px rgba(0,0,0,.85),inset 0 1px 0 rgba(255,255,255,.06)}
+.topnav::after{left:28px;right:28px}
+.navlinks a,.nav-ind{border-radius:10px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}
+/* hamburger button */
+.burger{display:inline-flex;align-items:center;gap:12px;height:48px;padding:0 16px;border-radius:12px;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.05);color:var(--fg);font:500 15px var(--body);cursor:pointer;transition:background .2s var(--ease),border-color .2s var(--ease)}
+.burger:hover{background:rgba(255,255,255,.09);border-color:rgba(255,255,255,.28)}
+.burger[aria-expanded="true"]{border-color:rgba(46,230,201,.55);background:rgba(46,230,201,.08)}
+.burger:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+.hb{position:relative;flex:none;width:20px;height:14px}
+.hb i{position:absolute;left:0;width:100%;height:2px;border-radius:2px;background:currentColor;transition:top .3s var(--ease),transform .3s var(--ease),opacity .2s}
+.hb i:nth-child(1){top:0}.hb i:nth-child(2){top:6px}.hb i:nth-child(3){top:12px}
+.burger[aria-expanded="true"] .hb i:nth-child(1){top:6px;transform:rotate(45deg)}
+.burger[aria-expanded="true"] .hb i:nth-child(2){opacity:0}
+.burger[aria-expanded="true"] .hb i:nth-child(3){top:6px;transform:rotate(-45deg)}
+/* menu card: solid background (a backdrop-filter nested in the bar's own one composites wrongly in Chrome) */
+.mnav .mpanel{position:absolute;right:0;top:calc(100% + 14px);width:min(360px,calc(100vw - 32px));max-height:calc(100vh - 120px);overflow-y:auto;display:flex;flex-direction:column;gap:2px;padding:10px;border-radius:16px;border:1px solid rgba(255,255,255,.12);background:#0c0c0c;box-shadow:0 24px 60px -16px rgba(0,0,0,.9),inset 0 1px 0 rgba(255,255,255,.05);counter-reset:s -1}
+.mnav .mpanel[hidden]{display:none}
+.mnav .mpanel:not([hidden]){animation:mpin .28s var(--ease)}
+@keyframes mpin{from{opacity:0;transform:translateY(-6px) scale(.98)}}
+.mnav .mpanel a{display:flex;align-items:center;gap:14px;padding:13px 14px;border-radius:10px;font-size:17px;line-height:1.4;color:#d4d4d8;text-decoration:none}
+.mnav .mpanel a::before{counter-increment:s;content:counter(s,decimal-leading-zero);font:12px var(--mono);color:var(--dim)}
+.mnav .mpanel a:hover{background:rgba(255,255,255,.06);color:var(--fg)}
+.mnav .mpanel a:focus-visible{outline:2px solid var(--teal);outline-offset:-2px}
+/* desktop sizes */
+@media (min-width:1024px){.topnav{height:72px}.navlinks a{font-size:15px;padding:11px 12px}}
+@media (min-width:1024px) and (max-width:1199px){.navlinks a{padding:11px 10px}}
+@media (min-width:1200px){.navlinks{gap:2px}.navlinks a{font-size:15.5px;padding:11px 13px}}
+@media (min-width:1440px){html{scroll-padding-top:108px}.topnav{height:76px}.navlinks a{font-size:16px;padding:12px 15px}}
+/* phones: closer to the edges, same floating card */
+@media (max-width:640px){html{scroll-padding-top:88px}.topnav{top:10px;margin-top:10px;width:calc(100% - 20px);height:64px;padding-inline:14px 8px;border-radius:14px}.burger{height:46px}}
+/* ---------- v8: lighter hero (short subtitle, three result states, terminal tucked away) ---------- */
+.hero h1{margin-top:36px}
+.vp{margin-top:44px;padding:28px 32px;max-width:820px}
+.hero .vp .hsub{margin:0 auto;max-width:58ch;font-size:clamp(17px,1.5vw,19.5px);line-height:1.55;color:#d4d4d8}
+.states{list-style:none;margin:24px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;text-align:left}
+.states li{display:flex;flex-direction:column;align-items:flex-start;gap:10px;padding:14px 16px;border-radius:14px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.025)}
+.states .res{font-size:12.5px;padding:4px 10px}
+.states .res::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor;box-shadow:0 0 8px currentColor}
+.states p{font-size:14.5px;line-height:1.5;color:#d4d4d8}
+.hero .cta{margin-top:44px}
+.runit{margin-top:24px;width:min(660px,100%)}
+.runit>summary{display:inline-flex;align-items:center;gap:8px;list-style:none;cursor:pointer;font:500 14px var(--body);color:var(--mut);padding:8px 14px;border-radius:999px;border:1px solid transparent;transition:color .2s var(--ease),border-color .2s var(--ease),background .2s var(--ease)}
+.runit>summary::-webkit-details-marker{display:none}
+.runit>summary::before{content:"›";font:600 16px var(--mono);color:var(--teal);transition:transform .25s var(--ease)}
+.runit>summary:hover{color:var(--fg);border-color:rgba(255,255,255,.13);background:rgba(255,255,255,.03)}
+.runit[open]>summary::before{transform:rotate(90deg)}
+.runit>summary:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+.runit .note{margin:10px auto 0;max-width:60ch}
+.runit .cbar{margin:14px auto 0}
+.pframe{margin-top:96px}
+@media (max-width:760px){.states{grid-template-columns:minmax(0,1fr)}.states li{flex-direction:row;align-items:center;gap:12px}.states .res{flex:none;min-width:98px;justify-content:center}}
+@media (max-width:640px){.hero h1{margin-top:28px}.vp{margin-top:32px;padding:20px 18px}.hero .cta{margin-top:32px}.pframe{margin-top:64px}}
+/* ---------- v9: calmer reading (roomier cards, 62ch text, labelled code blocks, striped tables, accordions) ---------- */
+/* cards: one solid surface on the black page, a clean hairline border, more room inside */
+body{line-height:1.7}
+.panel{padding:28px;background:#0d0d0f;border:1px solid rgba(255,255,255,.08)}
+.panel .panel{background:#080809}
+.road-card{background:transparent;border-style:dashed}
+.bento a{padding:32px;background:#0d0d0f;border-color:rgba(255,255,255,.08)}
+.bento a:hover{background:#101013}
+.lab .grid2>.stack,.flow,.verdict,.ctx-c,.attacks button{background:#0d0d0f}
+.attacks button[aria-pressed="true"]{background:radial-gradient(120% 90% at 0 0,rgba(var(--c),.12),transparent 60%),#0d0d0f}
+/* reading: explanatory text capped at 62ch, taller lines */
+section.sec p,section.sec li,.sec-h .lede,.claim{max-width:62ch}
+.sub,.note,td .why,.ctl .r,.req .nx,.attacks .s,.bento .see,.ctx-c p,.chk,.tx,.fl-n,ul.plain,.states p{line-height:1.7}
+.sec-h .lede{line-height:1.7}
+/* code blocks: a rounded card with a small title at the top left */
+.cmd::after{content:"Terminal";left:68px;transform:none;top:8px;font:11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--dim)}
+.pterm::after{content:"Terminal output";position:absolute;top:7px;left:60px;font:11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--dim)}
+.panel pre,#popCases pre{position:relative;border-radius:12px;border:1px solid rgba(255,255,255,.1);background:#060606;padding-top:0}
+.panel pre::before,#popCases pre::before{content:"Output";position:sticky;top:0;left:0;display:block;margin:0 -18px 12px;padding:8px 18px;border-bottom:1px solid rgba(255,255,255,.06);background:#0b0b0b;font:11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--dim);white-space:nowrap}
+.panel pre.json::before,#popCases pre.json::before{content:"JSON"}
+.cmd pre::before{content:none}
+/* tables: roomier cells, alternating rows, row hover */
+th,td{padding:14px 16px}
+tbody tr:nth-child(even) td{background:rgba(255,255,255,.025)}
+tbody tr:hover td{background:rgba(255,255,255,.045)}
+td.num{font-size:14px}
+td.num .why{font-family:var(--body);font-size:14px!important;white-space:normal;color:var(--mut)}
+/* accordions for advanced technical detail */
+details.more{margin-top:20px;border:1px solid rgba(255,255,255,.08);border-radius:16px;background:#0d0d0f}
+details.more>summary{display:flex;align-items:center;justify-content:space-between;gap:16px;list-style:none;cursor:pointer;padding:20px 24px;border-radius:16px;transition:background .2s var(--ease)}
+details.more>summary::-webkit-details-marker{display:none}
+details.more>summary::after{content:"";flex:none;width:9px;height:9px;margin-right:4px;border-right:2px solid var(--mut);border-bottom:2px solid var(--mut);transform:rotate(45deg) translateY(-3px);transition:transform .3s var(--ease),border-color .2s}
+details.more[open]>summary::after{transform:rotate(-135deg) translateY(-3px)}
+details.more>summary:hover{background:rgba(255,255,255,.03)}
+details.more>summary:hover::after{border-color:var(--teal)}
+details.more>summary:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+details.more .mt{display:flex;flex-direction:column;gap:4px}
+details.more .mt h3{font-size:19px}
+details.more .mt .sub{max-width:62ch}
+details.more .mb{padding:4px 24px 24px}
+details.more .mb>.cmd,details.more .mb>.tbl,details.more .mb>.screens{margin-top:0!important}
+@media (max-width:640px){.panel{padding:20px}.bento a{padding:24px}details.more>summary{padding:16px 18px}details.more .mb{padding:4px 14px 16px}th,td{padding:12px 12px}}
+@media print{details.more{break-inside:auto}}
+@media (min-width:761px){.limits-grid{grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);align-items:start}}
+/* ---------- v10: medium screens (no cut identifiers) and low-brightness contrast ---------- */
+/* metadata grey at WCAG AAA (7.1:1 or more on every surface, from #000 to #161616) */
+:root{--dim:#9aa3b2}
+/* terminals never break a hash or a path: long lines scroll sideways instead */
+.pterm{white-space:pre;overflow-wrap:normal;overflow-x:auto}
+pre{overflow-wrap:normal;word-break:normal}
+pre,.tbl{overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scrollbar-color:#3a3a3a transparent}
+/* ---------- v11: ambience, tactile hover, metadata vs values, translucent borders ---------- */
+/* 1 · ambient glow: a very wide, very faint teal light behind the hero block (4%) */
+.hero::after{content:"";position:absolute;left:50%;top:180px;width:min(1600px,160%);height:1200px;transform:translateX(-50%);background:radial-gradient(50% 45% at 50% 40%,rgba(46,230,201,.04),transparent 72%);filter:blur(40px);pointer-events:none;z-index:-1}
+/* 2 · every card, row and control eases its border and background (180ms ease-in-out);
+   :not(.bf) leaves the blur-fade reveal transition alone until it has run */
+:is(.panel,.bento a,.ctx-c,.states li,.fl-n,.fl-l,details.more,.tbl,.cmd,.verdict,.lab .grid2>.stack,.attacks button,.atlas button,.reqbtn,.file,.seg button,.chip,.copy,.btn,.burger,.cbar,.epill):not(.bf){transition-property:border-color,background-color,box-shadow,color,transform;transition-duration:.18s;transition-timing-function:ease-in-out}
+tbody td{transition:background-color .15s ease-in-out}
+:is(.panel,.ctx-c,.states li,.fl-n:not(.bad),.fl-l,details.more,.tbl,.cmd,.verdict,.lab .grid2>.stack):hover{border-color:rgba(255,255,255,.16);box-shadow:inset 0 1px 0 rgba(255,255,255,.07)}
+.panel .panel:hover{border-color:rgba(255,255,255,.14)}
+/* 3 · metadata reads as label, data reads as value */
+.k,.sec-label,th,.prov dt,.ctx-c a,.tx dt{color:var(--dim)}
+th{font:500 11.5px var(--mono);letter-spacing:.08em;text-transform:uppercase}
+.tx dt{font:12.5px var(--mono)}
+.tx dd,.prov dd,.chainrow .h,.ctl .id,.req .nm,.file .p,.pctl .r .n{color:#e4e4e7}
+td.num,.fig .n{color:#fafafa;font-variant-numeric:tabular-nums}
+.prov dd{font-size:13px}
+h2,h3{letter-spacing:-.03em}
 @media (prefers-reduced-motion:reduce){
   .btn.shimmer::before,.beam::after,.bento a::after,.hero h1,.epill>span:last-child{animation:none!important}
   .bento a::after{display:none}
@@ -512,13 +695,14 @@ main [style*="font-size:13px"],.ctx-h,#mcpInstr{font-size:14px!important}
 
 <header class="topnav">
   <a class="brand" href="#top" aria-label="Invaria, back to top"><svg width="24" height="24" viewBox="0 0 100 100" aria-hidden="true"><defs><linearGradient id="mk" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#b9adff"/><stop offset=".5" stop-color="#8b9cff"/><stop offset="1" stop-color="#2ee6c9"/></linearGradient></defs><rect x="18" y="18" width="64" height="64" rx="14" transform="rotate(45 50 50)" fill="none" stroke="url(#mk)" stroke-width="7"/><path d="M50 26v48" stroke="url(#mk)" stroke-width="8" stroke-linecap="round"/><path d="M36 50h28" stroke="url(#mk)" stroke-width="6" stroke-linecap="round" opacity=".55"/></svg><b>INV<span>Λ</span>RIA</b></a>
-  <ul class="navlinks" id="topnavlinks" aria-label="Sections"><li><a href="#start">Claims</a></li><li><a href="#testnet">Testnet</a></li><li><a href="#scenarios">Conclusions</a></li><li><a href="#tamper">Tamper lab</a></li><li><a href="#analytics">Analytics</a></li><li><a href="#privacy">Privacy</a></li><li><a href="#ai">AI &amp; MCP</a></li><li><a href="#limits">Limits</a></li></ul>
+  <ul class="navlinks" id="topnavlinks" aria-label="Sections"><li class="nav-ind" aria-hidden="true"></li><li><a href="#start">Claims</a></li><li><a href="#testnet">Testnet</a></li><li><a href="#scenarios">Conclusions</a></li><li><a href="#tamper">Tamper lab</a></li><li><a href="#analytics">Analytics</a></li><li><a href="#privacy">Privacy</a></li><li><a href="#ai">AI &amp; MCP</a></li><li><a href="#limits">Limits</a></li></ul>
   <div class="navr">
     <a class="cchip" id="navCommit" href="#reproduce" title="Outputs on this page come from this commit"></a>
     <a class="btn pri sm" href="#reproduce">Reproduce</a>
-    <details class="mnav"><summary>Sections</summary><nav aria-label="Sections"><a href="#start">Claims</a><a href="#testnet">Testnet</a><a href="#scenarios">Conclusions</a><a href="#tamper">Tamper lab</a><a href="#analytics">Analytics</a><a href="#privacy">Privacy</a><a href="#ai">AI &amp; MCP</a><a href="#limits">Limits</a><a href="#reproduce">Reproduce</a></nav></details>
+    <div class="mnav"><button class="burger" type="button" aria-expanded="false" aria-controls="mnavPanel"><span class="cur">Sections</span><span class="sr"> menu</span><span class="hb" aria-hidden="true"><i></i><i></i><i></i></span></button><nav class="mpanel" id="mnavPanel" aria-label="Sections" hidden><a href="#start">Claims</a><a href="#testnet">Testnet</a><a href="#scenarios">Conclusions</a><a href="#tamper">Tamper lab</a><a href="#analytics">Analytics</a><a href="#privacy">Privacy</a><a href="#ai">AI &amp; MCP</a><a href="#limits">Limits</a><a href="#reproduce">Reproduce</a></nav></div>
   </div>
 </header>
+<nav class="rail" id="rail" aria-label="Section index"><ol><li class="prog" aria-hidden="true"></li><li><a href="#start"><span class="lb"><i>00</i>Claims</span><span class="dt" aria-hidden="true"></span></a></li><li><a href="#testnet"><span class="lb"><i>01</i>Testnet</span><span class="dt" aria-hidden="true"></span></a></li><li><a href="#scenarios"><span class="lb"><i>02</i>Conclusions</span><span class="dt" aria-hidden="true"></span></a></li><li><a href="#tamper"><span class="lb"><i>03</i>Tamper lab</span><span class="dt" aria-hidden="true"></span></a></li><li><a href="#analytics"><span class="lb"><i>04</i>Analytics</span><span class="dt" aria-hidden="true"></span></a></li><li><a href="#privacy"><span class="lb"><i>05</i>Privacy</span><span class="dt" aria-hidden="true"></span></a></li><li><a href="#ai"><span class="lb"><i>06</i>AI &amp; MCP</span><span class="dt" aria-hidden="true"></span></a></li><li><a href="#limits"><span class="lb"><i>07</i>Limits</span><span class="dt" aria-hidden="true"></span></a></li><li><a href="#reproduce"><span class="lb"><i>08</i>Reproduce</span><span class="dt" aria-hidden="true"></span></a></li></ol></nav>
 
 <main id="top">
 <header class="hero">
@@ -526,10 +710,16 @@ main [style*="font-size:13px"],.ctx-h,#mcpInstr{font-size:14px!important}
   <a class="epill" href="#start"><span class="tag">Evidence Lab</span><span>Every result here comes from a real run →</span></a>
   <h1>Every conclusion carries<br class="brk"> its evidence.</h1>
   <div class="vp">
-    <p class="lede">Invaria tells a fund operator whether its institutional records and the Stellar ledger agree on an operation, and keeps the evidence that explains the answer: <b>MATCH</b>, <b>BREAK</b> or <b>UNKNOWN</b>. Every result on this page was produced by running Invaria's own code. Each section names the command that reproduces it, so you can compare our claims with your own run.</p>
+    <p class="lede hsub">Invaria tells a fund operator whether its records and the Stellar ledger agree on an operation, and keeps the evidence behind the answer.</p>
+    <ul class="states" aria-label="The three results">
+      <li><span class="res MATCH">MATCH</span><p>Records and the Stellar ledger agree, with evidence.</p></li>
+      <li><span class="res BREAK">BREAK</span><p>A discrepancy is proven.</p></li>
+      <li><span class="res UNKNOWN">UNKNOWN</span><p>Not enough evidence to conclude. Never means unpaid.</p></li>
+    </ul>
   </div>
   <div class="cta"><a class="btn shimmer" href="#start"><span>Start the checks</span></a><a class="btn sec" href="#reproduce">Reproduce it</a></div>
-  <div class="cbar"><span class="p" aria-hidden="true">$</span><pre>uv run --locked invaria check tests/fixtures/corpus/subscription-synthetic-1.2.0</pre><button class="copy" type="button" data-copy="uv run --locked invaria check tests/fixtures/corpus/subscription-synthetic-1.2.0">Copy</button></div>
+  <details class="runit"><summary>Run it yourself</summary><p class="note">Every result on this page was produced by running Invaria's own code. Each section names the command that reproduces it, so you can compare our claims with your own run.</p>
+  <div class="cbar"><span class="p" aria-hidden="true">$</span><pre>uv run --locked invaria check tests/fixtures/corpus/subscription-synthetic-1.2.0</pre><button class="copy" type="button" data-copy="uv run --locked invaria check tests/fixtures/corpus/subscription-synthetic-1.2.0">Copy</button></div></details>
   <div class="pframe beam" aria-label="Live view of real evaluations">
     <div class="pwin">
       <div class="pside" id="pfList" role="group" aria-label="Operation"></div>
@@ -659,10 +849,10 @@ main [style*="font-size:13px"],.ctx-h,#mcpInstr{font-size:14px!important}
       <details class="raw"><summary>Show all 22 cases</summary><div class="tbl"><table><thead><tr><th>Case</th><th>Expected</th><th>Got</th></tr></thead><tbody id="goldenBody"></tbody></table></div></details>
     </div>
   </div>
-  <div class="cmd" style="margin-top:14px"><pre><span class="p">$</span> uv run --locked invaria bundle tests/fixtures/corpus/subscription-synthetic-1.2.0 K3 /tmp/k3
+  <details class="more"><summary><span class="mt"><h3>Run the attacks yourself</h3><span class="sub">Build, sign and verify the K3 bundle, then run the golden corpus.</span></span></summary><div class="mb"><div class="cmd"><pre><span class="p">$</span> uv run --locked invaria bundle tests/fixtures/corpus/subscription-synthetic-1.2.0 K3 /tmp/k3
 <span class="p">$</span> uv run --locked invaria sign /tmp/k3 --key-file key.pem --key-id me --signed-at 2026-10-11T20:00:00Z
 <span class="p">$</span> uv run --locked invaria verify /tmp/k3 --trust-store store.json
-<span class="p">$</span> uv run --locked pytest tests/bundle/test_golden_corpus.py</pre><button class="copy" data-copy="uv run --locked pytest tests/bundle/test_golden_corpus.py">Copy</button></div>
+<span class="p">$</span> uv run --locked pytest tests/bundle/test_golden_corpus.py</pre><button class="copy" data-copy="uv run --locked pytest tests/bundle/test_golden_corpus.py">Copy</button></div></div></details>
 </section>
 
 <!-- 04 ANALYTICS -->
@@ -713,21 +903,17 @@ main [style*="font-size:13px"],.ctx-h,#mcpInstr{font-size:14px!important}
     <p class="sub" style="margin-top:8px;max-width:78ch">The same pinned, bitemporal record would carry incident revisions. A notice about an affected ledger entry would mark for review only the evaluations that depend on it, keep the original conclusion and the evidence it rested on, and record a declared repair separately from a verified one. The new result follows from the evidence that remains; it is not forced to UNKNOWN. Not implemented.</p></div>
 
   <div class="hr"></div>
-  <h3>The real console pages</h3>
-  <p class="sub" style="margin-top:6px">Rendered by the repository's read-only console (HTML, no JavaScript, 127.0.0.1 only) for the same report.</p>
-  <div class="screens" style="margin-top:14px">
+  <details class="more"><summary><span class="mt"><h3>The real console pages</h3><span class="sub">Rendered by the repository's read-only console (HTML, no JavaScript, 127.0.0.1 only) for the same report.</span></span></summary><div class="mb"><div class="screens">
     <figure><div class="scroll-shot"><img id="shotReport" alt="Integrity report page of the Invaria console: figures with numerator and denominator, selection status of every operation, discrepancies and diagnosed blocks."></div><figcaption>/reports/{id}: scroll inside the image</figcaption></figure>
     <figure><div class="scroll-shot"><img id="shotCases" alt="Pinned cases behind the BREAK figure of the report."></div><figcaption>/reports/{id}/cases?key=result:BREAK</figcaption></figure>
-  </div>
+  </div></div></details>
 
   <div class="hr"></div>
-  <h3>The analytics roadmap, view by view</h3>
-  <p class="sub" style="margin-top:6px">What exists in the branch today and what is designed on top of it.</p>
-  <div class="tbl" style="margin-top:12px"><table><thead><tr><th>View</th><th>Decision it supports</th><th>Status</th></tr></thead><tbody id="viewsBody"></tbody></table></div>
-  <div class="cmd" style="margin-top:14px"><pre><span class="p">$</span> INVARIA_DATABASE_URL=postgresql://… uv run --locked invaria analytics report \
+  <details class="more"><summary><span class="mt"><h3>The analytics roadmap, view by view</h3><span class="sub">What exists in the branch today and what is designed on top of it.</span></span></summary><div class="mb"><div class="tbl" style="margin-top:12px"><table><thead><tr><th>View</th><th>Decision it supports</th><th>Status</th></tr></thead><tbody id="viewsBody"></tbody></table></div></div></details>
+  <details class="more"><summary><span class="mt"><h3>Run the report yourself</h3><span class="sub">Register a report, open the cases behind a figure, reproduce it. Needs a disposable PostgreSQL.</span></span></summary><div class="mb"><div class="cmd"><pre><span class="p">$</span> INVARIA_DATABASE_URL=postgresql://… uv run --locked invaria analytics report \
     --access-profile access.json --evidence-horizon 2026-10-20T00:00:00Z --register
 <span class="p">$</span> uv run --locked invaria analytics cases --access-profile access.json --report report.json --key result:BREAK
-<span class="p">$</span> uv run --locked invaria analytics reproduce --access-profile access.json --report report.json</pre><button class="copy" data-copy="uv run --locked invaria analytics reproduce --access-profile access.json --report report.json">Copy</button></div>
+<span class="p">$</span> uv run --locked invaria analytics reproduce --access-profile access.json --report report.json</pre><button class="copy" data-copy="uv run --locked invaria analytics reproduce --access-profile access.json --report report.json">Copy</button></div></div></details>
 </section>
 
 <!-- 05 PRIVACY -->
@@ -837,23 +1023,27 @@ main [style*="font-size:13px"],.ctx-h,#mcpInstr{font-size:14px!important}
 <!-- 07 LIMITS -->
 <section class="sec" id="limits">
   <div class="sec-h">
-    <h2>What Invaria does not claim</h2>
-    <p class="lede">The limits are part of the product. These come from the repository's capability matrix.</p>
+    <h2>What Invaria does not claim today</h2>
+    <p class="lede">The limits are part of the product. These come from the repository's capability matrix and describe the public branch at the commit this page was built from. They mark where the branch stands today, not where the project ends: several appear on the roadmap above. The rules that hold by design are listed apart.</p>
   </div>
-  <div class="grid2">
-    <div class="panel"><ul class="plain">
+  <div class="grid2 limits-grid">
+    <div class="panel"><div class="row" style="justify-content:space-between"><h3>Current limits of this branch</h3><span class="chip" id="limitsAsOf"></span></div>
+      <p class="sub" style="margin-top:6px">Where the public branch stands at this commit. Later commits can change these.</p>
+      <ul class="plain" style="margin-top:14px">
       <li>Not production-ready, not a hosted service, not complete Stellar support. Testnet and synthetic data only; no mainnet.</li>
       <li>On-chain coverage used by the engines is <code>provider_claimed</code>: Horizon and RPC are run by the same provider. Ledger verification against a history checkpoint exists as a separate report and changes no conclusion.</li>
       <li>The institution, bank and transfer agent of the demo are synthetic. DEMOA is not a real fund.</li>
       <li>Not supported: fees, partial fills, multiple payments, FX, omnibus accounts, custom Soroban tokens, R3 source proofs.</li>
-    </ul></div>
-    <div class="panel"><ul class="plain">
-      <li>UNKNOWN never means unpaid. BREAK is never called a loss. Not applicable is never fulfilled.</li>
-      <li>No legal right is inferred from a ticker, price, wallet or transfer. Even a token backed 1:1 can be a security entitlement rather than a registered shareholding.</li>
-      <li>A report's sha256 checks internal consistency, not who issued it. It does not show that all real activity was registered.</li>
       <li>Analytics reads the present publication state; the evidence horizon filters by knowledge time only.</li>
       <li>Zero-knowledge proofs, FHE, webhooks, OIDC/SSO and multi-tenant hosting are not implemented.</li>
       <li>The MCP server is local and stdio only. The core bundles and calls no language model; the assistant is whatever MCP client the operator connects.</li>
+    </ul></div>
+    <div class="panel"><h3>Rules that stay by design</h3>
+      <p class="sub" style="margin-top:6px">Deliberate choices of the model, not gaps to close.</p>
+      <ul class="plain" style="margin-top:14px">
+      <li>UNKNOWN never means unpaid. BREAK is never called a loss. Not applicable is never fulfilled.</li>
+      <li>No legal right is inferred from a ticker, price, wallet or transfer. Even a token backed 1:1 can be a security entitlement rather than a registered shareholding.</li>
+      <li>A report's sha256 checks internal consistency, not who issued it. It does not show that all real activity was registered.</li>
     </ul></div>
   </div>
 </section>
@@ -892,6 +1082,7 @@ const MARK_SVG = '<svg width="16" height="16" viewBox="0 0 100 100" aria-hidden=
 const prov = [["Repository", "github.com/paugk/Invaria"], ["Branch", M.branch], ["Commit", M.commit.slice(0, 12)], ["Commit date", M.commit_date.slice(0, 10)], ["Outputs collected", M.collected_at.replace("T", " ").replace("+00:00", " UTC")]];
 $("#prov").innerHTML = prov.map(([k, v]) => `<div><dt>${k}</dt><dd>${esc(v)}</dd></div>`).join("");
 $("#navCommit").textContent = M.commit.slice(0, 7);
+$("#limitsAsOf").textContent = `commit ${M.commit.slice(0, 7)} · ${M.commit_date.slice(0, 10)}`;
 $("#footMeta").textContent = `Outputs from commit ${M.commit.slice(0, 12)} · collected ${M.collected_at.slice(0, 10)}`;
 
 // claims
@@ -1185,7 +1376,7 @@ $("#exportTamper").innerHTML = EX.tamper.map(x => `<div class="row" style="justi
 const ICONS = {"start": "<path d=\"M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z\"/><path d=\"M4 22v-7\"/>", "testnet": "<path d=\"M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71\"/><path d=\"M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71\"/>", "scenarios": "<path d=\"m3 17 2 2 4-4\"/><path d=\"m3 7 2 2 4-4\"/><path d=\"M13 6h8\"/><path d=\"M13 12h8\"/><path d=\"M13 18h8\"/>", "tamper": "<path d=\"M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z\"/><path d=\"m9 12 2 2 4-4\"/>", "analytics": "<path d=\"M3 3v16a2 2 0 0 0 2 2h16\"/><path d=\"M18 17V9\"/><path d=\"M13 17V5\"/><path d=\"M8 17v-3\"/>", "privacy": "<path d=\"M10.73 5.08A10.74 10.74 0 0 1 21.94 11.65a1 1 0 0 1 0 .7 10.75 10.75 0 0 1-1.44 2.49\"/><path d=\"M14.08 14.16a3 3 0 0 1-4.24-4.24\"/><path d=\"M17.48 17.5A10.75 10.75 0 0 1 2.06 12.35a1 1 0 0 1 0-.7 10.75 10.75 0 0 1 4.45-5.14\"/><path d=\"m2 2 20 20\"/>", "ai": "<path d=\"M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z\"/><path d=\"M19 3v4\"/><path d=\"M21 5h-4\"/>", "limits": "<circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"M12 8v4\"/><path d=\"M12 16h.01\"/>", "reproduce": "<path d=\"m4 17 6-6-6-6\"/><path d=\"M12 19h8\"/>"};
 const svgI = d => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${d}</svg>`;
 document.querySelectorAll("[data-ico]").forEach(el => { el.innerHTML = svgI(ICONS[el.dataset.ico]); });
-const SECN = {start: ["00", "Start here"], testnet: ["01", "Testnet"], scenarios: ["02", "Conclusions"], tamper: ["03", "Tamper lab"], analytics: ["04", "Analytics"], privacy: ["05", "Privacy"], ai: ["06", "AI & MCP"], limits: ["07", "Limits"], reproduce: ["08", "Reproduce"]};
+const SECN = {start: ["00", "Start here"], testnet: ["01", "Testnet"], scenarios: ["02", "Conclusions"], tamper: ["03", "Tamper lab"], analytics: ["04", "Analytics"], privacy: ["05", "Privacy"], ai: ["06", "AI & MCP"], limits: ["07", "Current limits"], reproduce: ["08", "Reproduce"]};
 document.querySelectorAll("section.sec").forEach(sec => { const h = sec.querySelector(".sec-h"); const n = SECN[sec.id]; if (h && n) h.insertAdjacentHTML("afterbegin", `<p class="sec-label">${svgI(ICONS[sec.id])}<span>${n[0]} · ${esc(n[1])}</span></p>`); });
 
 // ---------- AI & MCP ----------
@@ -1233,9 +1424,44 @@ function selectPre(b) { const pre = b.parentElement.querySelector("pre"); if (!p
 
 // rail highlight
 const links = [...document.querySelectorAll("#topnavlinks a")];
-document.querySelectorAll(".mnav nav a").forEach(a => a.addEventListener("click", () => a.closest("details").open = false));
-const io = new IntersectionObserver(ents => { ents.forEach(en => { if (en.isIntersecting) links.forEach(a => a.classList.toggle("on", a.getAttribute("href") === "#" + en.target.id)); }); }, { rootMargin: "-30% 0px -60% 0px" });
-document.querySelectorAll("section.sec").forEach(s => io.observe(s));
+// mobile menu: the hamburger opens a card; a link, Escape or a click outside closes it
+const burger = $(".burger"), mpanel = $("#mnavPanel");
+const setMenu = open => { burger.setAttribute("aria-expanded", open); mpanel.hidden = !open; if (open) (mpanel.querySelector("a.on") || mpanel.querySelector("a")).focus({ preventScroll: true }); };
+burger.addEventListener("click", () => setMenu(burger.getAttribute("aria-expanded") !== "true"));
+mpanel.addEventListener("click", e => { if (e.target.closest("a")) setMenu(false); });
+document.addEventListener("keydown", e => { if (e.key === "Escape" && !mpanel.hidden) { setMenu(false); burger.focus(); } });
+document.addEventListener("click", e => { if (!mpanel.hidden && !e.target.closest(".mnav")) setMenu(false); });
+// the section being read: the last one whose top has passed 35% of the viewport (the last one at the page end)
+const secs = [...document.querySelectorAll("section.sec")];
+const navAll = [...links, ...document.querySelectorAll(".mnav nav a, #rail a")];
+const railLinks = [...document.querySelectorAll("#rail a")];
+const ul = $("#topnavlinks"), ind = ul.querySelector(".nav-ind"), rail = $("#rail"), prog = rail.querySelector(".prog"), cur = $(".mnav .cur");
+let current = null;
+const placeInd = () => {
+  const a = links.find(x => x.classList.contains("on"));
+  if (!a || !a.offsetParent) { ind.style.opacity = 0; return; }
+  Object.assign(ind.style, { opacity: 1, transform: `translate(${a.offsetLeft}px,${a.offsetTop}px)`, width: `${a.offsetWidth}px`, height: `${a.offsetHeight}px` });
+};
+function spy() {
+  const y = innerHeight * .35;
+  let id = null;
+  for (const s of secs) if (s.getBoundingClientRect().top <= y) id = s.id;
+  if (innerHeight + scrollY >= document.documentElement.scrollHeight - 4) id = secs[secs.length - 1].id;
+  rail.classList.toggle("show", secs[0].getBoundingClientRect().top < innerHeight * .6);
+  const i = secs.findIndex(s => s.id === id);
+  railLinks.forEach((a, k) => a.classList.toggle("done", i >= 0 && k < i));
+  if (i >= 0 && railLinks[i]) { const r = railLinks[i].offsetTop + 11 - 14; prog.style.height = `${Math.max(0, r)}px`; } else prog.style.height = "0px";
+  if (id === current) return;
+  current = id;
+  navAll.forEach(a => { const on = a.getAttribute("href") === "#" + id; a.classList.toggle("on", on); if (on) a.setAttribute("aria-current", "true"); else a.removeAttribute("aria-current"); });
+  const label = id && $(`.mnav nav a[href="#${id}"]`);
+  cur.textContent = label ? label.textContent : "Sections";
+  placeInd();
+}
+addEventListener("scroll", spy, { passive: true });
+addEventListener("resize", () => { spy(); placeInd(); });
+if (document.fonts) document.fonts.ready.then(placeInd);
+spy(); setTimeout(() => ul.classList.add("ready"), 50);
 })();
 </script>
 <script>
@@ -1324,6 +1550,10 @@ const hl = pre => {
 document.querySelectorAll(".cmd pre, .cbar pre, .pterm").forEach(hl);
 const pf = document.getElementById("pfMain");
 if (pf) new MutationObserver(() => pf.querySelectorAll(".pterm").forEach(hl)).observe(pf, { childList: true });
+
+// printing: open "Run it yourself" so the PDF keeps its text, then restore
+addEventListener("beforeprint", () => document.querySelectorAll("details.runit:not([open]), details.more:not([open])").forEach(d => { d.open = true; d.dataset.printOpened = "1"; }));
+addEventListener("afterprint", () => document.querySelectorAll("details.runit[data-print-opened], details.more[data-print-opened]").forEach(d => { d.open = false; delete d.dataset.printOpened; }));
 
 if (still) return;
 
