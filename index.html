@@ -1174,7 +1174,7 @@ function renderTN(id) {
 }
 $("#tnTabs").innerHTML = TN.map(t => `<button type="button" data-id="${t.id}"><span class="dot ${t.result}"></span>${t.id}</button>`).join("");
 $("#tnTabs").addEventListener("click", e => { const b = e.target.closest("button"); if (b) renderTN(b.dataset.id); });
-renderTN("TN-NO-LINK");
+renderTN("TN-LINKED");
 
 // ---------- hero: live frame over real evaluations ----------
 const PF = [
