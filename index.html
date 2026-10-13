@@ -691,6 +691,17 @@ h2,h3{letter-spacing:-.03em}
 .ctx-c p{font-size:15.5px!important;line-height:1.6;color:#e4e4e7}
 .ctx-c a{font-size:13px;color:var(--mut)}
 @media (max-width:640px){.ctx{margin-top:56px}.ctx-c{padding:22px 20px 20px}.ctx-h{font-size:14px!important}}
+/* card hierarchy: figure → title → fact → bridge → link to the demo; the dated source stays secondary */
+.ctx-c{gap:10px}
+.ctx-c .ctx-t{font-size:17px;font-weight:600;line-height:1.3;color:#fafafa}
+.ctx-c .ctx-t:first-child{font-size:clamp(20px,1.7vw,24px);line-height:1.25}
+.ctx-c p.ctx-q{font-size:15px!important;line-height:1.5;color:#fafafa;padding-left:12px;border-left:2px solid rgba(46,230,201,.55);margin-top:2px}
+.ctx-f{margin-top:auto;padding-top:6px;display:flex;flex-direction:column;align-items:flex-start;gap:2px}
+.ctx-c .ctx-f a{margin-top:0}
+.ctx-c a.ctx-go{display:inline-flex;align-items:center;min-height:30px;font:500 15px var(--body);color:var(--teal);text-decoration:underline;text-decoration-color:rgba(46,230,201,.35);text-underline-offset:4px}
+.ctx-c a.ctx-go:hover{text-decoration-color:var(--teal)}
+.ctx-c a.ctx-src{display:inline-flex;align-items:center;min-height:30px;font-size:13px;color:var(--mut)}
+@media (pointer:coarse),(max-width:640px){.ctx-c a.ctx-go{min-height:44px}.ctx-c a.ctx-src{min-height:36px}}
 @media (prefers-reduced-motion:reduce){
   .btn.shimmer::before,.beam::after,.bento a::after,.hero h1,.epill>span:last-child{animation:none!important}
   .bento a::after{display:none}
@@ -745,11 +756,11 @@ h2,h3{letter-spacing:-.03em}
     <span class="bdg road">Roadmap</span><span>research direction</span>
   </div>
   <div class="ctx" role="group" aria-label="External context">
-    <p class="ctx-h"><span class="bdg ext">External context</span><span>Public sources, not Invaria's outputs. Invaria itself runs on testnet and synthetic data only.</span></p>
+    <p class="ctx-h"><span class="bdg ext">External context</span><span>Public sources, not Invaria's outputs. The demo uses testnet and synthetic data only.</span></p>
     <div class="ctx-g">
-      <div class="ctx-c"><span class="ctx-n">$3.54B</span><p>in tokenized real-world assets distributed on Stellar, across 82 assets and 23,344 holders.</p><a href="https://app.rwa.xyz/networks/stellar" target="_blank" rel="noopener">rwa.xyz, 12 Oct 2026 ↗</a></div>
-      <div class="ctx-c"><span class="ctx-n">478</span><p>ledger entries archived with stale values after Protocol 23. 84 were restored, 77 of them modified, before a patch quarantined them.</p><a href="https://stellar.org/blog/developers/addressing-state-archival-inconsistencies-protocol-upgrade-vote-next-week" target="_blank" rel="noopener">Stellar Development Foundation, Oct 2025 · fixed in Protocol 24 (CAP-0076) ↗</a></div>
-      <div class="ctx-c"><span class="ctx-n">1 : 1</span><p>backing does not settle the legal question: Securitize's tokenized stocks are security entitlements, not entries on the shareholder register.</p><a href="https://decrypt.co/380458/securitize-nvidia-apple-amazon-tokenized-stocks-solana" target="_blank" rel="noopener">Securitize launch, 8 Oct 2026 ↗</a></div>
+      <div class="ctx-c"><span class="ctx-n">$3.54B</span><h3 class="ctx-t">Real assets. Operational questions.</h3><p>in tokenized real-world assets distributed on Stellar.</p><p class="ctx-q">Which operations have enough evidence to be considered complete?</p><div class="ctx-f"><a class="ctx-go" href="#scenarios">Explore the checks →</a><a class="ctx-src" href="https://app.rwa.xyz/networks/stellar" target="_blank" rel="noopener">rwa.xyz, 12 Oct 2026 ↗</a></div></div>
+      <div class="ctx-c"><h3 class="ctx-t">When token and underlying records diverge</h3><p>ESMA's October 2026 call for evidence highlights reconciliation risks between tokenised collateral and underlying records.</p><p class="ctx-q">Which evidence supports the conclusion?</p><div class="ctx-f"><a class="ctx-go" href="#sub-controls">Explore the checks →</a><a class="ctx-src" href="https://www.esma.europa.eu/sites/default/files/2026-10/ESMA91-1505572268-4934_-_Call_for_evidence_tokenisation.pdf" target="_blank" rel="noopener">ESMA · 9 Oct 2026 · p. 18, §35 ↗</a></div></div>
+      <div class="ctx-c"><h3 class="ctx-t">Redemption executed. Payment received?</h3><p>Spiko's documented workflow separates share cancellation, bank transfer and receipt of funds.</p><p class="ctx-q">Invaria checks which steps the available evidence supports.</p><div class="ctx-f"><a class="ctx-go" href="#redemption-corpus">Explore a synthetic redemption →</a><a class="ctx-src" href="https://www.spiko.io/blog/a-day-in-the-life-of-spiko-smart-cash-operations" target="_blank" rel="noopener">Spiko · Operational workflow, May 2026 ↗</a></div></div>
     </div>
   </div>
 </header>
@@ -770,7 +781,7 @@ h2,h3{letter-spacing:-.03em}
     <h2>Real Stellar testnet evidence, replayed offline</h2>
     <p class="lede">We issued a demo asset, <code>DEMOA</code>, on Stellar testnet and made three transactions on purpose: a real delivery of 1,000 units, a payment that fails, and a second 1,000-unit payment that carries the same memo. The order, bank and transfer-agent records are synthetic. The on-chain side is real, recorded from Horizon and RPC with the sha256 of every response.</p>
     <p class="claim">An on-chain movement counts for an operation <b>only through an explicit, approved execution link</b>. A matching memo or amount never links anything, and a failed transaction never counts as a delivery.</p>
-    <p class="sub" style="max-width:70ch"><b style="color:var(--fg);font-weight:500">Why provenance matters.</b> In October 2025 Stellar found that Protocol 23 had archived 478 ledger entries with stale values; 77 were modified on restore before a patch quarantined them. Providers served those values correctly, and they still did not match canonical history. Nothing indicates the capture below was affected. It is the reason every observation keeps its source and sha256.</p>
+    <p class="sub" style="max-width:70ch"><b style="color:var(--fg);font-weight:500">Why provenance matters.</b> In October 2025 Stellar found that Protocol 23 had archived 478 ledger entries with stale values; 77 were modified on restore before a patch quarantined them. Providers served them faithfully; they still did not match canonical history. Nothing indicates the capture below was affected. Every observation keeps its source and sha256: proof of what was received, not that it was true.</p>
   </div>
   <div class="panel" style="padding:0" id="chainList"></div>
   <p class="note" style="margin-top:10px">Explorer links go to the public testnet. Testnet is reset periodically; if it has been reset since 2026-10-05 the links stop resolving, and the recorded responses in <code>tests/fixtures/stellar/recordings/demoa-own/</code>, pinned by sha256, remain the evidence.</p>
@@ -798,7 +809,7 @@ h2,h3{letter-spacing:-.03em}
     <p class="lede">A fund subscription, <code>SUB-0001</code>, as its evidence arrives. Each evaluation is a pure function of a closed snapshot: it records when the facts were valid (<code>valid_at</code>) and when they were known (<code>known_at</code>). Open any control to see the checks the engine ran, the one that fixed the result, and what would move it forward.</p>
   </div>
   <div class="tl" id="subTimeline"></div>
-  <div class="panel" style="margin-top:16px">
+  <div class="panel" style="margin-top:16px" id="sub-controls">
     <div class="row" style="justify-content:space-between">
       <div class="seg" id="subTabs" role="group" aria-label="Subscription scenario"></div>
     </div>
@@ -808,7 +819,7 @@ h2,h3{letter-spacing:-.03em}
   <div class="grid2" style="margin-top:16px" id="changeCards"></div>
 
   <div class="hr"></div>
-  <h3>The redemption corpus: 46 hand-written cases</h3>
+  <h3 id="redemption-corpus">The redemption corpus: 46 hand-written cases</h3>
   <p class="sub" style="margin-top:6px;max-width:72ch">Missed deadlines, short payments, cancellations, retractions, late corrections, collisions. Expected results were written by hand before the evaluator reproduced them. Under the current profile many cases are UNKNOWN on purpose: the synthetic chain certificates do not show that the observed burns are complete, so Invaria refuses to call them MATCH.</p>
   <div class="row" style="margin-top:12px" id="redSummary"></div>
   <div class="atlas" id="redAtlas" style="margin-top:12px"></div>
@@ -907,7 +918,7 @@ h2,h3{letter-spacing:-.03em}
   </div>
 
   <div class="hr"></div>
-  <h3>What we knew at the close vs. what we know today</h3>
+  <h3 id="close-vs-today">What we knew at the close vs. what we know today</h3>
   <p class="sub" style="margin-top:6px;max-width:72ch">A report is registered with its evidence horizon and pinned references. When a bank correction arrives later, the registered report does not drift. Recomputing the same horizon today says something else, and says why.</p>
   <div class="grid3" style="margin-top:14px" id="thenNow"></div>
   <div class="panel road-card" style="margin-top:16px"><span class="bdg pre">Proposed model</span>
