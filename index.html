@@ -694,7 +694,7 @@ h2,h3{letter-spacing:-.03em}
 /* card hierarchy: figure → title → fact → bridge → link to the demo; the dated source stays secondary */
 .ctx-c{gap:10px}
 .ctx-c .ctx-t{font-size:17px;font-weight:600;line-height:1.3;color:#fafafa}
-.ctx-c .ctx-t:first-child{font-size:clamp(20px,1.7vw,24px);line-height:1.25}
+.ctx-c .ctx-t:first-child,.ctx-c .ctx-k+.ctx-t{font-size:clamp(20px,1.7vw,24px);line-height:1.25}
 .ctx-c p.ctx-q{font-size:15px!important;line-height:1.5;color:#fafafa;padding-left:12px;border-left:2px solid rgba(46,230,201,.55);margin-top:2px}
 .ctx-f{margin-top:auto;padding-top:6px;display:flex;flex-direction:column;align-items:flex-start;gap:2px}
 .ctx-c .ctx-f a{margin-top:0}
@@ -703,7 +703,8 @@ h2,h3{letter-spacing:-.03em}
 .ctx-c .ctx-k{font:600 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--dim)}
 .ctx-c p.ctx-q strong{font-weight:600}
 .ctx-c a.ctx-src{display:inline-flex;align-items:center;min-height:30px;font-size:13px;color:var(--mut)}
-@media (pointer:coarse),(max-width:640px){.ctx-c a.ctx-go{min-height:44px}.ctx-c a.ctx-src{min-height:36px}}
+.ctx-c span.ctx-src{display:inline-flex;flex-wrap:wrap;align-items:center;gap:0 5px;min-height:30px;font:13px var(--mono);color:var(--mut)}
+@media (pointer:coarse),(max-width:640px){.ctx-c a.ctx-go{min-height:44px}.ctx-c a.ctx-src,.ctx-c span.ctx-src a{display:inline-flex;align-items:center;min-height:36px}}
 @media (prefers-reduced-motion:reduce){
   .btn.shimmer::before,.beam::after,.bento a::after,.hero h1,.epill>span:last-child{animation:none!important}
   .bento a::after{display:none}
@@ -761,8 +762,8 @@ h2,h3{letter-spacing:-.03em}
     <p class="ctx-h"><span class="bdg ext">Why this matters for Stellar</span><span>Public sources, not Invaria's outputs. The demo uses testnet and synthetic data only.</span></p>
     <div class="ctx-g">
       <div class="ctx-c"><span class="ctx-k">Stellar activity</span><span class="ctx-n">$3.54B</span><h3 class="ctx-t">in distributed RWA value</h3><p>Tokenized value shows the scale of activity. It does not show which operations have sufficient evidence behind them.</p><p class="ctx-q"><strong>Invaria makes evaluation coverage visible—including unknown and unevaluated cases.</strong></p><div class="ctx-f"><a class="ctx-go" href="#analytics">Explore evidence-aware analytics →</a><a class="ctx-src" href="https://app.rwa.xyz/networks/stellar" target="_blank" rel="noopener">Source: RWA.xyz · Observed 13 Oct 2026 ↗</a></div></div>
-      <div class="ctx-c"><h3 class="ctx-t">When token and underlying records diverge</h3><p>ESMA's October 2026 call for evidence highlights reconciliation risks between tokenised collateral and underlying records.</p><p class="ctx-q">Which evidence supports the conclusion?</p><div class="ctx-f"><a class="ctx-go" href="#sub-controls">Explore the checks →</a><a class="ctx-src" href="https://www.esma.europa.eu/sites/default/files/2026-10/ESMA91-1505572268-4934_-_Call_for_evidence_tokenisation.pdf" target="_blank" rel="noopener">ESMA · 9 Oct 2026 · p. 18, §35 ↗</a></div></div>
-      <div class="ctx-c"><h3 class="ctx-t">Redemption executed. Payment received?</h3><p>Spiko's documented workflow separates share cancellation, bank transfer and receipt of funds.</p><p class="ctx-q">Invaria checks which steps the available evidence supports.</p><div class="ctx-f"><a class="ctx-go" href="#redemption-corpus">Explore a synthetic redemption →</a><a class="ctx-src" href="https://www.spiko.io/blog/a-day-in-the-life-of-spiko-smart-cash-operations" target="_blank" rel="noopener">Spiko · Operational workflow, May 2026 ↗</a></div></div>
+      <div class="ctx-c"><span class="ctx-k">Real operations on Stellar</span><h3 class="ctx-t">Shares cancelled. Investor paid?</h3><p>Spiko, a tokenized-fund platform using Stellar, documents separate steps for share cancellation, bank transfer and receipt of funds.</p><p class="ctx-q"><strong>Invaria connects each step with the evidence needed to assess completion.</strong></p><div class="ctx-f"><a class="ctx-go" href="#redemption-corpus">Explore a synthetic redemption →</a><span class="ctx-src">Sources: <a href="https://docs.spiko.io/documentation/tokenization/addresses#stellar-contracts" target="_blank" rel="noopener">Spiko’s Stellar integration ↗</a> · <a href="https://www.spiko.io/blog/a-day-in-the-life-of-spiko-smart-cash-operations" target="_blank" rel="noopener">Redemption workflow ↗</a></span></div></div>
+      <div class="ctx-c"><span class="ctx-k">A recognized operational risk</span><h3 class="ctx-t">When tokens and institutional records disagree</h3><p>ESMA, the European Securities and Markets Authority, highlights reconciliation risks between tokenized collateral and its underlying records.</p><p class="ctx-q"><strong>Invaria addresses this class of problem through explicit controls and traceable evidence for Stellar operations.</strong></p><div class="ctx-f"><a class="ctx-go" href="#sub-controls" data-sub="K3">Inspect a record discrepancy →</a><a class="ctx-src" href="https://www.esma.europa.eu/sites/default/files/2026-10/ESMA91-1505572268-4934_-_Call_for_evidence_tokenisation.pdf" target="_blank" rel="noopener">Source: ESMA consultation · October 2026 · §35 ↗</a></div></div>
     </div>
   </div>
 </header>
@@ -1228,6 +1229,7 @@ function renderSub(id) {
 $("#subTabs").innerHTML = sub.map(s => `<button type="button" data-id="${s.id}"><span class="dot ${s.result}"></span>${s.id}</button>`).join("");
 $("#subTabs").addEventListener("click", e => { const b = e.target.closest("button"); if (b) renderSub(b.dataset.id); });
 renderSub("K3");
+document.querySelectorAll("a[data-sub]").forEach(a => a.addEventListener("click", () => renderSub(a.dataset.sub)));
 $("#changeCards").innerHTML = DATA.changes.map(c => `<div class="panel"><span class="k">explain-change ${esc(c.before)} → ${esc(c.after)}</span><pre style="margin-top:10px;white-space:pre-wrap">${esc(c.lines.join("\n"))}</pre></div>`).join("");
 
 // redemption atlas
